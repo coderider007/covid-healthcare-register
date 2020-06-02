@@ -1,0 +1,142 @@
+<div class="content" role="main">
+
+  <!-- Resources -->
+  <h3>Live status of available hospital resources</h3>
+  <br>
+  
+  <div class="d-none d-sm-block content" style="overflow: auto; width: 100%; margin-top: 10px;">
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Item Type</th>
+          <th scope="col">Item Count</th>
+          <th scope="col">Item Name</th>
+          <th scope="col">Available</th>
+          <th scope="col">Hospital ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+          <th scope="col">Address</th>
+          <th scope="col">Item ID</th>
+          <th scope="col">Note</th>
+          <th scope="col">Available From</th>
+          <th scope="col">Available Till</th>
+          <th scope="col">Subscribe</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let hospitalRecord of hospitalRecords | async">
+        <th scope="row">{{ hospitalRecord.id }}</th>
+        <td>
+          <span>{{hospitalRecord.itemType}}</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.itemCount}}</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.itemName}}</span>
+        </td>
+        <td *ngIf="hospitalRecord.isAvailable" class="bg-success">
+          <span>YES</span>
+        </td>
+        <td *ngIf="!hospitalRecord.isAvailable" class="bg-danger">
+          <span>NO</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.hospitalId}}</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.name}}</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.phone}}</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.email}}</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.address}}</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.itemId}}</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.note}}</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.availableFrom}}</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.availableTill}}</span>
+        </td>
+        <td>
+          <input type="checkbox">
+        </td>
+      </tr>
+      </tbody>
+    </table>  
+
+  </div>
+  
+  <div class="d-block d-sm-none content" style="overflow: auto; width: 100%; margin-top: 10px;">
+   
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Item Type</th>
+          <th scope="col">Item Count</th>
+          <th scope="col">Item Name</th>
+          <th scope="col">Available</th>
+          <th scope="col">Name</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Email</th>
+          <th scope="col">Address</th>
+          <th scope="col">Subscribe</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let hospitalRecord of hospitalRecords | async">
+        <th scope="row">{{ hospitalRecord.id }}</th>
+        <td>
+          <span>{{hospitalRecord.itemType}}</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.itemCount}}</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.itemName}}</span>
+        </td>
+        <td *ngIf="hospitalRecord.isAvailable" class="bg-success">
+          <span>YES</span>
+        </td>
+        <td *ngIf="!hospitalRecord.isAvailable" class="bg-danger">
+          <span>NO</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.name}}</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.phone}}</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.email}}</span>
+        </td>
+        <td>
+          <span>{{hospitalRecord.address}}</span>
+        </td>
+        <td>
+          <input type="checkbox">
+        </td>
+      </tr>
+      </tbody>
+    </table>  
+  
+  </div>
+
+  <br>
+  <br>
+
+</div>
+
