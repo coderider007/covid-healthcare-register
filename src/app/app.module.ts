@@ -14,6 +14,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ListingsComponent } from './listings/listings.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { CovidStatusPageComponent } from './covid-status-page/covid-status-page.component';
+import { GmapLocationComponent } from './gmap-location/gmap-location.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { CovidStatusPageComponent } from './covid-status-page/covid-status-page.
     FooterComponent,
     ListingsComponent,
     RegistrationComponent,
-    CovidStatusPageComponent
+    CovidStatusPageComponent,
+    GmapLocationComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +38,7 @@ import { CovidStatusPageComponent } from './covid-status-page/covid-status-page.
       { path: 'manage', component: AddrecordComponent },
       { path: 'covidstatus', component: CovidStatusPageComponent },
       { path: 'register', component: RegistrationComponent },
+      { path: 'location', component: GmapLocationComponent },
     ])
   ],
   providers: [],

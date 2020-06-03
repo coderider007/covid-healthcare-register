@@ -3,6 +3,7 @@
   <!-- Resources -->
   <h3>Live status of available hospital resources</h3>
   <br>
+  <a class="nav-item nav-link text-black" href="#" routerLink="/location" [queryParams]="{'latitude': 28.7041, 'longitude': 77.1025}">Directions</a>
   
   <div class="d-none d-sm-block content" style="overflow: auto; width: 100%; margin-top: 10px;">
     <table class="table">
@@ -23,6 +24,7 @@
           <th scope="col">Available From</th>
           <th scope="col">Available Till</th>
           <th scope="col">Subscribe</th>
+          <th scope="col">Directions</th>
         </tr>
       </thead>
       <tbody>
@@ -73,6 +75,9 @@
         <td>
           <input type="checkbox">
         </td>
+        <td>
+          <a class="nav-item nav-link text-black" href="#" routerLink="/location" [queryParams]="{'latitude': hospitalRecord.latitude, 'longitude': hospitalRecord.longitude}">Directions</a>
+        </td>
       </tr>
       </tbody>
     </table>  
@@ -92,8 +97,8 @@
           <th scope="col">Name</th>
           <th scope="col">Phone</th>
           <th scope="col">Email</th>
-          <th scope="col">Address</th>
           <th scope="col">Subscribe</th>
+          <th scope="col">Directions</th>
         </tr>
       </thead>
       <tbody>
@@ -124,16 +129,29 @@
           <span>{{hospitalRecord.email}}</span>
         </td>
         <td>
-          <span>{{hospitalRecord.address}}</span>
+          <input type="checkbox" (change)="subscribeAddRemove($event, hospitalRecord)">
         </td>
         <td>
-          <input type="checkbox">
+          <a class="nav-item nav-link text-black" href="#" routerLink="/location" [queryParams]="{'latitude': hospitalRecord.latitude, 'longitude': hospitalRecord.longitude}">Directions</a>
         </td>
       </tr>
       </tbody>
     </table>  
-  
+    
   </div>
+  <form (submit)="subscribe()">
+    <div class="form-group">
+      <label>Subscribe to notications for selected items.</label>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-9">
+        <input type="text" class="form-control" id="inputAddress" placeholder="Email ID">
+      </div>
+      <div class="form-group col-md-3">
+        <button type="submit" class="btn btn-primary">Subscribe</button>
+      </div>
+    </div>
+  </form>
 
   <br>
   <br>

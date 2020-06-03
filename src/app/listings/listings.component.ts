@@ -16,8 +16,22 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class ListingsComponent implements OnInit {
 
   hospitalRecords: Observable<HospitalRecord[]>;
+  selectedRecords: HospitalRecord[];
+
+  subscribersEmail: string;
 
   constructor(private service: HospitalRecordService, private http: HttpClient) {
+  }
+
+  subscribeAddRemove(value: any, rec: HospitalRecord): void {
+    if (value.currentTarget.checked){
+      this.selectedRecords.push(rec);
+    } else {
+      const objIndex = this.selectedRecords.findIndex(obj => obj.id === rec.id);
+      if (objIndex > -1) {
+        this.selectedRecords.splice(objIndex, 1);
+      }
+    }
   }
 
   ngOnInit(): void {
@@ -35,4 +49,21 @@ export class ListingsComponent implements OnInit {
       this.hospitalRecords = of(resp);
     });
   }
+
+  subscribe(): void {
+    console.log('subscribe()');
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Basic ' + btoa('chruser:chrpassword')
+      })
+    };
+    const response = this.http.post('http://localhost:8080/chr/hospital/subscribe',
+        { email: this.subscribersEmail, items: this.selectedRecords}, httpOptions);
+    response.subscribe((resp) => {
+      console.log(resp);
+    });
+  }
+
 }
