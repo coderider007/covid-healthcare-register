@@ -1,6 +1,4 @@
-import { HttpHeaders } from '@angular/common/http';
-
 export const environment = {
   production: true,
-  chrbaseuri: 'http://localhost:8080/chr/hospital'
+  chrbaseuri: 'http://ec2-13-127-77-144.ap-south-1.compute.amazonaws.com/chr/hospital'
 };
