@@ -1,5 +1,5 @@
 <!-- Toolbar -->
-<div class="toolbar" role="banner">
+<div class="toolbar" role="banner" style="overflow:hidden">
     <img
       width="40"
       alt="CHR Logo"
@@ -12,7 +12,9 @@
     <a class="nav-item nav-link text-white" href="#" routerLink="/">Home</a>
     <a class="nav-item nav-link text-white" href="#" routerLink="/manage">Manage</a>
     <a class="nav-item nav-link text-white" href="#" routerLink="/covidstatus">Covid Stats</a>
-    <a class="nav-item nav-link text-white" href="#" routerLink="/register">Register</a>
-    
-  </div>
-  
+    <div style="position: fixed; left: 90%; top: 20px;">
+      <a *ngIf="!isLoggedIn" class="text-white" href="#" routerLink="/login">Login</a>
+      <a *ngIf="isLoggedIn" class="text-white" href="#" routerLink="/" (click)=handleLogout()>Logout</a>
+    </div>
+
+</div>

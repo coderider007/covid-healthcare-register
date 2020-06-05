@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from '../login/auth.service';
+import { CommonService } from '../services/common.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  isLoggedIn = false;
+  constructor(
+    private authenticationService: AuthenticationService,
+    private commonService: CommonService) { }
 
   ngOnInit(): void {
+    this.isLoggedIn = this.authenticationService.isUserLoggedIn();
+    console.log('menu ->' + this.isLoggedIn);
+    this.commonService.loginEvent
+    .subscribe((data: boolean) => {
+      console.log('Login Event: ' + data);
+      this.isLoggedIn = this.authenticationService.isUserLoggedIn();
+      console.log('menu ->' + this.isLoggedIn);
+    });
+  }
+
+  handleLogout() {
+    this.authenticationService.logout();
+    this.isLoggedIn = false;
   }
 
 }

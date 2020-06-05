@@ -1,2 +1,70 @@
-<div [innerHtml]="myTemplate">
+<div class="content" role="main">
+
+    <h3>Covid Live status</h3>
+    <br>
+
+    <div *ngIf="(global | async) as glob">
+        <div class="row d-none d-sm-block">
+            <div class="col">
+                <h4 style="text-align: center;">Global Total</h4>
+                <app-pie-chart [confirmed]="glob.TotalConfirmed" [recovered]="glob.TotalRecovered" [deaths]="glob.TotalDeaths"></app-pie-chart>
+            </div>
+            <div class="col">
+                <h4 style="text-align: center;">Global New</h4>
+                <app-pie-chart [confirmed]="glob.NewConfirmed" [recovered]="glob.NewRecovered" [deaths]="glob.NewDeaths"></app-pie-chart>
+            </div>
+        </div>
+        <div class="row d-block d-sm-none">
+            <h4 style="text-align: center;">Global Total</h4>
+            <app-pie-chart [confirmed]="glob.TotalConfirmed" [recovered]="glob.TotalRecovered" [deaths]="glob.TotalDeaths"></app-pie-chart>
+        </div>
+        <div class="row d-block d-sm-none">
+            <h4 style="text-align: center;">Global New</h4>
+            <app-pie-chart [confirmed]="glob.NewConfirmed" [recovered]="glob.NewRecovered" [deaths]="glob.NewDeaths"></app-pie-chart>
+        </div>
+    </div>
+    
+    <div class="content" style="overflow: auto; width: 100%; margin-top: 10px;">
+    <table class="table">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">Country</th>
+            <th scope="col">Total Confirmed</th>
+            <th scope="col">Total Recovered</th>
+            <th scope="col">Total Deaths</th>
+            <th scope="col">New Confirmed</th>
+            <th scope="col">New Recovered</th>
+            <th scope="col">New Deaths</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let country of countries | async">
+          <th scope="row">{{ country.Country }}</th>
+          <td>
+            <span>{{country.TotalConfirmed}}</span>
+          </td>
+          <td>
+            <span>{{country.TotalRecovered}}</span>
+          </td>
+          <td>
+            <span>{{country.TotalDeaths}}</span>
+          </td>
+          <td>
+            <span>{{country.NewConfirmed}}</span>
+          </td>
+          <td>
+            <span>{{country.NewRecovered}}</span>
+          </td>
+          <td>
+            <span>{{country.NewDeaths}}</span>
+          </td>
+          <td>
+            <span>{{country.Date}}</span>
+          </td>
+        </tr>
+        </tbody>
+      </table>  
+      
+    </div>  
 </div>

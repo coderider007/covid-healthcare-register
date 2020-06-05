@@ -28,8 +28,8 @@ function sort(hospitalRecords: HospitalRecord[], column: string, ): HospitalReco
 }
 
 function matches(hospitalRecord: HospitalRecord, term: string, pipe: PipeTransform) {
-  return hospitalRecord.name.toLowerCase().includes(term)
-    || pipe.transform(hospitalRecord.address).includes(term)
+  return hospitalRecord.hospitalRegistration.name.toLowerCase().includes(term)
+    || pipe.transform(hospitalRecord.hospitalRegistration.addressDetails).includes(term)
     || pipe.transform(hospitalRecord.itemName).includes(term);
 }
 

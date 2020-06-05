@@ -6,5 +6,7 @@ export class HospitalRegistration {
     emailId: string;
     zipCode: string;
     city: string;
-    details: string;
+    addressDetails: string;
+    longitude: number;
+    latitude: number;
 }

@@ -1,20 +1,20 @@
+import { HospitalRegistration } from './hospital_registration';
+
 export class HospitalRecord {
     id: number;
-    hospitalId: string;
-    name: string;
-    phone: string;
-    email: string;
-    notifyWhenUserSubscribe: boolean;
-    address: string;
+    pandemicType: string;
     floor: string;
     section: string;
     room: string;
+    itemId: string;
+    itemName: string;
     itemType: string;
     itemCount: number;
-    itemName: string;
-    itemId: string;
-    note: string;
+    availableCount: number;
     isAvailable: boolean;
     availableFrom: string;
     availableTill: string;
+    note: string;
+    notifyWhenUserSubscribe: boolean;
+    hospitalRegistration: HospitalRegistration;
 }
