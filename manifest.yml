@@ -5,3 +5,4 @@ applications:
   name: covid-healthcare-register-wit2020
   memory: 256M
   stack: cflinuxfs2
+  
